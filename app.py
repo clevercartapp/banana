@@ -13,6 +13,10 @@ import tempfile
 os.environ["OPENAI_API_KEY"] = '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'
 app = FastAPI()
 
+@app.get("/")
+async def default_return():
+    return {"tis the time to":"celebrate christmas"}
+
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     with open(file.filename, "wb") as f:
